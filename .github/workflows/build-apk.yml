@@ -31,6 +31,10 @@ jobs:
           if [ ! -d android ]; then
             flutter create --org com.threadly --project-name threadly --platforms=android,ios .
           fi
+          # Release builds need INTERNET permission to load product photos.
+          M=android/app/src/main/AndroidManifest.xml
+          grep -q 'android.permission.INTERNET' $M || sed -i 's|<application|<uses-permission android:name="android.permission.INTERNET"/>\n    <application|' $M
+          grep -n "INTERNET" $M
 
       - run: flutter pub get
       - name: Analyze (errors shown as annotations)
