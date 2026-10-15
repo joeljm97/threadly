@@ -45,6 +45,10 @@ jobs:
             exit 1
           }
       - run: cp build/app/outputs/flutter-apk/app-release.apk build/app/outputs/flutter-apk/threadly.apk
+      - name: Build smaller per-phone APKs
+        run: |
+          flutter build apk --release --split-per-abi
+          cp build/app/outputs/flutter-apk/app-arm64-v8a-release.apk build/app/outputs/flutter-apk/threadly-arm64.apk
 
       - uses: actions/upload-artifact@v4
         with:
@@ -57,5 +61,7 @@ jobs:
         with:
           tag_name: build-${{ github.run_number }}
           name: Threadly build ${{ github.run_number }}
-          files: build/app/outputs/flutter-apk/threadly.apk
+          files: |
+            build/app/outputs/flutter-apk/threadly.apk
+            build/app/outputs/flutter-apk/threadly-arm64.apk
           make_latest: true
