@@ -94,8 +94,8 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                 itemCount: p.images.length,
                 onPageChanged: (i) => setState(() => _image = i),
                 itemBuilder: (_, i) => i == 0
-                    ? Hero(tag: 'img_${p.id}', child: NetImage(p.images[i]))
-                    : NetImage(p.images[i]),
+                    ? Hero(tag: 'img_${p.id}', child: NetImage(p.images[i], fit: BoxFit.contain))
+                    : NetImage(p.images[i], fit: BoxFit.contain),
               ),
               Positioned(left: 12, bottom: 12, child: RatingChip(p)),
               Positioned(

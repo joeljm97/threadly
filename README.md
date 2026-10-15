@@ -33,7 +33,7 @@ lib/
   main.dart                 app + routes
   theme.dart                colours, ₹ formatting, theme
   models/product.dart       Product, CartItem, Order
-  data/mock_data.dart       ~80 generated products, banners, categories
+  data/mock_data.dart       ~75 products with dummy photos, banners, categories
   providers/shop_provider.dart  cart, wishlist, orders, recently viewed
   widgets/product_card.dart     card, grid, price row, rating chip, app-bar icons
   screens/                  home, categories, list+filter, detail, search,
@@ -41,4 +41,4 @@ lib/
 ```
 
 ## Next steps
-Swap `mock_data.dart` for a real API or Firebase, add login, and plug in a payment gateway (Razorpay/Cashfree) on the payment step. Product images are placeholders from picsum.photos.
+Swap `mock_data.dart` for a real API or Firebase, add login, and plug in a payment gateway (Razorpay/Cashfree) on the payment step. Product photos are dummy images from dummyjson.com (a free test catalogue).

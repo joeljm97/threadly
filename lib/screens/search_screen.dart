@@ -15,7 +15,7 @@ class _SearchScreenState extends State<SearchScreen> {
   static final List<String> _recent = [];
   String _q = '';
 
-  static const _popular = ['Kurtas', 'Sneakers', 'Dresses', 'Jeans', 'Watches', 'Sarees', 'Handbags'];
+  static const _popular = ['Sneakers', 'Dresses', 'Frocks', 'Shirts', 'Watches', 'Handbags', 'Sunglasses'];
 
   List<String> get _suggestions {
     if (_q.isEmpty) return [];

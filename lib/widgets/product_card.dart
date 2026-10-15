@@ -12,7 +12,9 @@ class NetImage extends StatelessWidget {
   const NetImage(this.url, {super.key, this.fit = BoxFit.cover});
 
   @override
-  Widget build(BuildContext context) => CachedNetworkImage(
+  Widget build(BuildContext context) => ColoredBox(
+        color: AppColors.light,
+        child: CachedNetworkImage(
         imageUrl: url,
         fit: fit,
         width: double.infinity,
@@ -21,6 +23,7 @@ class NetImage extends StatelessWidget {
         errorWidget: (_, __, ___) => Container(
           color: AppColors.light,
           child: const Icon(Icons.image_not_supported_outlined, color: AppColors.grey),
+        ),
         ),
       );
 }
@@ -85,7 +88,7 @@ class ProductCard extends StatelessWidget {
       child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
         Expanded(
           child: Stack(children: [
-            Hero(tag: 'img_${product.id}', child: NetImage(product.images.first)),
+            Hero(tag: 'img_${product.id}', child: NetImage(product.images.first, fit: BoxFit.contain)),
             Positioned(left: 6, bottom: 6, child: RatingChip(product)),
             Positioned(
               right: 4,

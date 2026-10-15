@@ -121,30 +121,28 @@ class _HomeScreenState extends State<HomeScreen> {
               onPageChanged: (i) => setState(() => _banner = i),
               itemBuilder: (_, i) {
                 final b = banners[i];
+                final color = Color(b['color'] as int);
                 return GestureDetector(
-                  onTap: () => _openList(b['title']!, minDiscount: 50),
-                  child: Stack(fit: StackFit.expand, children: [
-                    NetImage(b['image']!),
-                    Container(
-                      decoration: const BoxDecoration(
-                        gradient: LinearGradient(
-                          begin: Alignment.centerLeft,
-                          end: Alignment.centerRight,
-                          colors: [Colors.black54, Colors.transparent],
-                        ),
+                  onTap: () => _openList(b['title'] as String, minDiscount: 50),
+                  child: Container(
+                    decoration: BoxDecoration(
+                      gradient: LinearGradient(
+                        colors: [color, Color.lerp(color, Colors.black, 0.35)!],
                       ),
                     ),
-                    Padding(
+                    child: Row(children: [
+                    Expanded(
+                      child: Padding(
                       padding: const EdgeInsets.all(20),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          Text(b['title']!,
+                          Text(b['title'] as String,
                               style: const TextStyle(
-                                  color: Colors.white, fontSize: 22, fontWeight: FontWeight.w800)),
+                                  color: Colors.white, fontSize: 20, fontWeight: FontWeight.w800)),
                           const SizedBox(height: 4),
-                          Text(b['subtitle']!,
+                          Text(b['subtitle'] as String,
                               style: const TextStyle(color: Colors.white, fontSize: 16)),
                           const SizedBox(height: 12),
                           Container(
@@ -155,8 +153,19 @@ class _HomeScreenState extends State<HomeScreen> {
                           ),
                         ],
                       ),
+                      ),
+                    ),
+                    Expanded(
+                      child: Padding(
+                        padding: const EdgeInsets.all(12),
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.circular(10),
+                          child: NetImage(b['image'] as String),
+                        ),
+                      ),
                     ),
                   ]),
+                  ),
                 );
               },
             ),

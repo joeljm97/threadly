@@ -156,7 +156,7 @@ class _OrderCard extends StatelessWidget {
         ...order.items.map((e) => Padding(
               padding: const EdgeInsets.only(bottom: 8),
               child: Row(children: [
-                SizedBox(width: 50, height: 66, child: NetImage(e.product.images.first)),
+                SizedBox(width: 50, height: 66, child: NetImage(e.product.images.first, fit: BoxFit.contain)),
                 const SizedBox(width: 10),
                 Expanded(
                   child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [

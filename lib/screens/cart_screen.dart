@@ -104,7 +104,7 @@ class _CartTile extends StatelessWidget {
           GestureDetector(
             onTap: () =>
                 Navigator.push(context, MaterialPageRoute(builder: (_) => ProductDetailScreen(product: p))),
-            child: SizedBox(width: 90, height: 120, child: NetImage(p.images.first)),
+            child: SizedBox(width: 90, height: 120, child: NetImage(p.images.first, fit: BoxFit.contain)),
           ),
           const SizedBox(width: 12),
           Expanded(
